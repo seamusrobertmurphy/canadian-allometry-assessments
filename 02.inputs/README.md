@@ -1,41 +1,29 @@
 # Data manifest
 
-Every dataset the analysis uses, where it came from, and how to get it back. Four files are
-deliberately excluded from git (see `.gitignore`) because they are large and openly
-redownloadable; `stem.txt` at 131 MB also exceeds GitHub's 100 MB per-file limit. Restore
-them into the paths below and the pipeline runs unchanged.
+Every dataset the analysis uses, where it came from, and how to get it back. Each subfolder
+carries its own README with the source, licence, download route, column definitions and
+gotchas — **read those before using the data**. This file is the index.
 
-| Path | Size | In git | Source |
-|---|---:|:---:|---|
-| `enfor/EnforCanadaBiomassFinalData_v2007-ENG.csv` | 0.9 MB | yes | ENFOR programme, Natural Resources Canada. OGL-Canada. DOI 10.23687/fbad665e-8ac9-4635-9f84-e4fd53a6253c |
-| `legacy-tree/stem.txt` | 131 MB | **no** | LegacyTreeData, CC BY. DOI 10.7294/W4VD6WC6 |
-| `legacy-tree/tree.txt` | 39 MB | **no** | LegacyTreeData, as above |
-| `legacy-tree/location.txt`, `section.txt`, `branch.txt`, `core.txt`, `disk.txt` | < 3 MB each | yes | LegacyTreeData, as above |
-| `tallo/Tallo.csv` | 47 MB | **no** | Tallo database (Jucker et al. 2022), CC BY. Not used by the current analysis; retained for reference |
-| `vri/vri_larch.csv` | 14 MB | **no** | BC Vegetation Resources Inventory, `WHSE_FOREST_VEGETATION.VEG_COMP_LYR_R1_POLY`, larch-leading polygons. OGL-British Columbia, BC Data Catalogue |
-| `larch/`, `scripts/` | small | yes | Derived inputs and the analysis pipeline |
+| Folder | Dataset | Role | README |
+|---|---|---|---|
+| `enfor/` | ENFOR destructive biomass, NRCan | tamarack bark mass, n = 439. The national calibration sample, so an in-sample control | [README](enfor/README.md) |
+| `legacy-tree/` | LegacyTreeData | western-larch bark mass (n = 13) **and** an independent taper sample (15 western larch, 42 tamarack) | [README](legacy-tree/README.md) |
+| `larch/` | National allometric coefficients (Lambert 2005 / Ung 2008) | the equations under test | [README](larch/README.md) |
+| `vri/` | BC Vegetation Resources Inventory | 67,409 larch-leading polygons the equations are applied across | [README](vri/README.md) |
+| `tallo/` | Tallo global allometry database | **not used**; retained for reference | [README](tallo/README.md) |
+| `scripts/` | legacy code | **not used**; the analysis lives in the manuscript | [README](scripts/README.md) |
 
-## Which files each stage needs
+## Runtime guide
 
-- **Stage 1** (`stage1_accuracy_refit.py`): `enfor/` CSV and `legacy-tree/tree.txt`.
-- **Stage 1b** (`stage1b_bark_geometry.py`): `legacy-tree/stem.txt` and `tree.txt`. This is
-  the only stage that needs `stem.txt`, and it reads just the breast-height sections.
-- **Stage 2** (`stage2_vri_province.py`) and **Stage 2b** (`stage2b_affleck_comparator.py`):
-  `vri/vri_larch.csv`.
+The analysis is in R code inside `01.manuscript/canadian-allometry-forest-science.qmd`. There
+are no separate scripts to run — rendering the manuscript runs the pipeline.
 
-## Retrieval notes
+| Chunk | Reads |
+|---|---|
+| `national-coefficients` | `larch/nfi_tree-level_allometric_dbh.csv`, `..._dbh-height.csv` |
+| `destructive-data` | `enfor/EnforCanadaBiomassFinalData_v2007-ENG.csv`, `legacy-tree/tree.txt` |
+| `taper-data` | `legacy-tree/stem.txt`, `legacy-tree/tree.txt` |
+| `inventory`, `comparator` | `vri/vri_larch.csv` |
 
-LegacyTreeData is distributed as a single archive; extract `stem.txt` and `tree.txt` into
-`legacy-tree/`. Both are comma-delimited with a small number of malformed rows, which the
-scripts skip with `on_bad_lines="skip"`. Units are imperial (inches, pounds, feet) and are
-converted in code.
+`stem.txt` is read by one chunk only, which keeps just the breast-height sections.
 
-The VRI extract was pulled from the BC Data Catalogue web feature service filtered to
-`SPECIES_CD_1 IN ('LW','LT')`. `stage2_vri_province.py` documents the request; the cached
-CSV is a convenience, not a dependency of the method.
-
-## Interpreter
-
-The Python stages need `matplotlib`, `scipy` and `pandas`. On this machine those live under
-`/opt/local/bin/python3.13`, not the default `python3` (3.12). The manuscript's setup chunk
-calls 3.13 explicitly.
