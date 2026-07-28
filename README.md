@@ -4,45 +4,6 @@ Manuscript, data and analysis for a component-level assessment of Canada's natio
 stem-bark biomass coefficients in the two North American larches, and a test of what the
 bias costs British Columbia's larch bark carbon account.
 
-**Target venue:** *Forest Science* (Society of American Foresters, published by **Springer
-Nature** since January 2025 — *not* Oxford Academic).
-**Status:** full draft, executable, rendering to `.docx` and `.html`.
-
----
-
-## The scientific claim
-
-Canada's national biomass equations fit 41 named species plus three generic classes. Only
-one larch is among them: tamarack (*Larix laricina*). Western larch (*Larix occidentalis*)
-is absent, so wherever a carbon account needs its stem bark it must borrow the **generic
-conifer coefficient** — a coefficient averaged over mostly thinner-barked evergreens.
-
-Western larch carries among the thickest bark of any North American conifer, an adaptation
-to frequent low-intensity fire. The paper asks what that mismatch costs, and finds:
-
-- The generic conifer coefficient **underestimates western-larch stem bark by 47 percent**
-  (bootstrap 95% interval −49.3 to −45.1), evaluated on trees independent of the national
-  calibration. A fitted western-larch equation cuts cross-validated relative RMSE from
-  56.3 to 9.3 percent.
-- The same coefficient **over-predicts tamarack by 18.6 percent**, worsening with size,
-  while tamarack's own coefficient is near unbiased (−0.6 percent).
-- The two larches therefore **depart in opposite directions**. A species-specific western-larch
-  coefficient is warranted; a genus-pooled one would serve neither.
-- Independent stem-taper trees, sharing no individuals with the mass sample and reaching
-  39.4 cm, confirm the divergence: bark occupies **24.4 percent** of the stem cross-section
-  in western larch against **13.3 percent** in tamarack, and bark area scales with diameter
-  to the power **2.56** against **1.36** — above and below isometry respectively, so bark's
-  share of the stem rises with size in one species and falls in the other.
-- Applied across **67,409 larch-leading polygons** of the BC Vegetation Resources Inventory,
-  correcting the bias raises western-larch stem-bark carbon from **3.15 to 5.03 Tg C**
-  (+60 percent) over 376,455 ha, concentrated in the southeast interior, while tamarack
-  falls 12 percent.
-- An independently published western-larch equation fitted to 105 cm brackets the
-  correction at **+37 to +60 percent (1.2 to 1.9 Tg C)** rather than a point estimate, and
-  exceeds ours above 45 cm — so our extrapolation is the conservative one in the large
-  trees that hold most stand carbon.
-
-Four hypotheses (H1–H4) are stated at the end of the Introduction and each is answered.
 
 ---
 
@@ -67,31 +28,6 @@ analysis, never typed.
 
 ---
 
-## The manuscript is executable
-
-`01.manuscript/canadian-allometry-forest-science.qmd` is the **single source of truth**.
-Edit that file, never the renders.
-
-Rendering it runs the entire analysis. The R code lives in the document itself, in the
-Results section, beside the outputs it derives, and every chunk is echoed — **the code is
-part of the manuscript, not scaffolding behind it.** Tables are built from the CSVs the
-code writes, so prose and numbers cannot drift.
-
-```sh
-quarto render 01.manuscript/canadian-allometry-forest-science.qmd --to docx
-```
-
-Requires **only R** (4.4.1) with `knitr` — base R and `stats`, no other package, no Python,
-no network. All inputs are cached under `02.inputs/`. A full render takes about 20 seconds.
-Every random draw (bootstrap intervals, cross-validation folds, Monte Carlo propagation) is
-seeded, so a clean re-render reproduces all twelve output tables bit-identically.
-
-Metrics reported throughout: **MAE, RMSE and R²**, each error term also expressed relative
-to the observed mean as a percentage, plus relative bias. Relative bias is
-100(predicted − observed)/observed, so negative means underestimation.
-
----
-
 ## Layout
 
 | Folder | Holds |
@@ -102,35 +38,4 @@ to the observed mean as a percentage, plus relative bias. Relative bias is
 | `04.references/` | `references.bib`, `springer-basic-author-date.csl` (the live style), Word style docs, and `literature/` (**not in git** — copyrighted PDFs) |
 | `05.tasks/` | planning and scoping memos, including the manuscript design spec |
 
-Read **[`INDEX.md`](INDEX.md)** before touching anything: it carries the archiving policy,
-the venue decision, the reconciliation items, and the known traps.
 
----
-
-## Exemplars
-
-The paper is modelled section by section on three papers, all in `04.references/literature/`:
-
-| Paper | Supplies |
-|---|---|
-| Delcourt & Veraverbeke 2022, *Biogeosciences* | statistical apparatus, component-equation table format, section register |
-| Xing et al. 2019, *Can. J. For. Res.* | accuracy-and-uncertainty assessment by component; the term **local equation** |
-| DellaSala et al. 2022, *Ecosphere* | province-wide inventory application; sets the scale target |
-
----
-
-## Known open items
-
-- `provincial` / `province-wide` survives in about a dozen places in the body.
-- Displayed R code puts the rendered `.docx` at ~13,250 words against the journal's 10,000
-  limit; prose, captions and references alone are ~8,160. Showing the code is a deliberate
-  decision, so this is a submission-packaging question, not a licence to hide it.
-- 20 display items against a limit of 10, and a 431-word abstract against a 150–250 limit.
-- Figure 6 has no basemap; a BC boundary is available at `02.inputs/vri/bc_boundary_3005.geojson`
-  but is not yet wired in.
-- Declarations section, separate title page, and end-of-manuscript word counts are not yet written.
-
-## Licence and attribution
-
-All four datasets are open (OGL-Canada, OGL-British Columbia, CC BY); see each subfolder's
-README. No confidential data are used. Analysis code is openly available in this repository.
