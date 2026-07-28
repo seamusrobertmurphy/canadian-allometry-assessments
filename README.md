@@ -36,6 +36,5 @@ analysis, never typed.
 | `02.inputs/` | the four datasets, each with its own README giving source, licence and download route |
 | `03.outputs/` | `tables/` (T1–T11) and `figures/` (F1–F9), regenerated on every render, plus results notes |
 | `04.references/` | `references.bib`, `springer-basic-author-date.csl` (the live style), Word style docs, and `literature/` (**not in git** — copyrighted PDFs) |
-| `05.tasks/` | planning and scoping memos, including the manuscript design spec |
 
 
