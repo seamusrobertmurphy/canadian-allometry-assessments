@@ -1,0 +1,211 @@
+---
+title: "Species-specific performance of Canada's national stem-bark allometric coefficients across the larches (*Larix*)"
+subtitle: "A component-level bias assessment of Canada's generalized equations"
+author:
+    - name: Dr Seamus Murphy
+      url: https://scholar.google.com/citations?hl=en&user=jDGq9I4AAAAJ
+      orcid: 0000-0002-1792-0351
+      email: seamusrobertmurphy@gmail.com
+
+date: today
+format:
+  docx:
+    prefer-html: true
+    reference-doc: ../04.references/style-springer-quarto.docx
+    highlight-style: github
+    latex_engine: xelatex
+
+  html:
+    page-layout: full
+    toc: true
+    number-sections: false
+    embed-resources: true
+    toc-title: "**Table of Contents**"
+    toc-location: right
+    toc-depth: 3
+    theme:
+      - ../04.references/style.scss
+      - cosmo
+    code-fold: true
+    code-summary: "View Code"
+    code-tools: true
+    code-link: true
+    max-width: 1000px
+    grid:
+      body-width: 1000px
+      margin-width: 200px
+
+execute:
+  eval: true
+  echo: true
+  warning: false
+  message: false
+  error: true
+  comment: NA
+
+always_allow_html: true
+engine: knitr
+citeproc: true
+editor: visual
+bibliography: ../04.references/references.bib
+csl: ../04.references/apa.csl
+keywords: [allometry, stem bark, Larix, western larch, tamarack, national biomass equations, component bias, forest carbon, MRV]
+---
+
+## Abstract {.unnumbered}
+
+Generalized national allometric equations give forest-carbon accounting consistent, transferable biomass estimates where local destructive equations are missing, at a known cost in accuracy for taxa and components under-represented in the calibration. Whether that cost is tolerable is species and component specific, and it is largest where a component departs strongly from the calibration norm. Stem bark is such a component in the larches, whose two North American species differ sharply in bark investment. We evaluated the stem-bark component of Canada's national biomass coefficients against destructively measured bark mass for both species using open data: tamarack (*Larix laricina*) from the ENFOR programme, the sample the national coefficients were fitted on, and western larch (*Larix occidentalis*) from the LegacyTreeData repository, an independent sample. Western larch has no national coefficient of its own, so in practice its bark is estimated through the generic conifer coefficient. That generic coefficient underestimated western-larch stem bark by 47 percent across the independent sample, which spans seven to twenty centimetres in diameter, and every tree carried between 1.6 and 2.6 times the predicted bark. Tamarack showed the opposite. Its own national coefficient was almost unbiased, near minus one percent, while the generic conifer coefficient over-predicted its bark by about nineteen percent. The mechanism is direct: western-larch stem bark is 18.9 percent of stem mass against 11.5 percent for tamarack. The two larches therefore depart from the national coefficients in opposite directions, so a single genus-level bark correction is not warranted whereas a species-specific western-larch bark coefficient is. Because the open data reach only to thirty-eight centimetres in diameter, the behaviour of the bias in large trees, where stand carbon concentrates, remains open and is the priority for further destructive sampling. These results locate where the national stem-bark coefficients serve the larches and where a targeted, species-specific refinement is needed.
+
+# Introduction
+
+Allometric equations are the foundation of forest biomass and carbon estimation. Because destructive measurement is impractical at operational scale, inventories convert measured tree dimensions, principally diameter at breast height (DBH), into component and total biomass through fitted allometric relationships, and every reported carbon stock ultimately rests on that conversion [@vorster2020]. The equations used for this purpose vary in taxonomic and geographic scope, from local, species-specific models built for a single site to generalized regional and national models intended for application across many species and conditions. Most take the power form relating component or total mass to diameter, and large compilations catalogue hundreds to thousands of such species- and component-specific equations for North America and Europe, including separate equations for stem bark, while also showing that many rest on few sites and small samples [@termikaelian1997; @zianis2005]. Generalized national equations, such as Canada's national biomass equations [@lambert2005; @ung2008], exist precisely because local destructive equations are unavailable for most species and places. The same rationale underlies the generalized equation sets used across North America more broadly, which gain breadth by grouping species by taxon and wood specific gravity rather than fitting each species separately [@chojnacky2014]. Fitted to thousands of trees and constrained so that components sum to total biomass by nonlinear seemingly-unrelated regression, they provide internally consistent, transferable estimates at the national scale, and for that reason they are embedded in national carbon accounting and in operational provincial inventories.
+
+That generality carries a recognized and accepted cost. Pooling across species and regions to gain consistency reduces accuracy and widens prediction uncertainty for populations under-represented in the calibration data. The magnitude of this trade-off has been measured directly. In west-central Canada, average prediction error rose from 9 to 12 to 25 kg per tree as equations generalized from local to regional to national, and national equations were statistically indistinguishable from local ones for only five of ten species [@case2008]. In northwestern Alberta, the diameter-based national equations underestimated aboveground biomass for white spruce while the diameter-and-height forms overestimated aspen and underestimated spruce [@xing2019]. Allometric equation choice is not a minor term in the error budget: it can contribute between 30 and 75 percent of total uncertainty in landscape biomass maps, rivalling or exceeding remote-sensing model error [@vorster2020; @ahmed2013]. Model choice is among the largest sources of uncertainty in biomass quantification, and the coefficients themselves are sensitive to the fitting procedure, so both the equation and the statistics used to build and evaluate it warrant scrutiny [@sileshi2014; @temesgen2015]. These findings do not indict generalized equations, which perform acceptably for most species; they establish that the size of the trade-off is species and context specific and must be evaluated where a population departs from the calibration norm.
+
+Two features of that trade-off are central to the present study. First, whole-tree accuracy can conceal component-level bias. In eastern Canadian open woodlands the national equations predicted whole-tree aboveground biomass of black spruce and jack pine accurately yet underestimated the branch component, a bias attributable to a crown form atypical of the closed-canopy stands that dominate the calibration [@fradette2021]. In western Canadian peatlands the national model underestimated the total biomass of small, stunted black spruce, and a stratum-specific model removed most of that bias [@wagers2024]. Component-resolved larch studies show the same logic: fitting separate equations for stem wood, stem bark, branches, and foliage reveals departures from existing equations that a total-biomass comparison would miss [@delcourt2022]. Second, bias concentrates where morphology or size departs from the calibration population. Because component biomass follows a power function of diameter, error is largest for trees whose form, or whose diameter, lies at or beyond the range and central tendency of the calibration sample.
+
+Western larch (*Larix occidentalis*) is an unusually clear case of both departures. It is a deciduous conifer, shade-intolerant, among the fastest-growing and most fire-resistant trees of the northwestern montane forests, and it attains large diameters well into the tail of, or beyond, the diameter range of typical national calibration samples. Its crown architecture is atypical of the evergreen conifers that dominate that calibration: foliage scales nearly linearly with diameter and is distributed diffusely through a long crown rather than concentrating as the crown lengthens [@williams2017], and larch foliage allometry further depends on stand structure and species admixture [@dirnberger2017]. Most relevant here, western larch develops among the thickest bark of any North American conifer, an adaptation to frequent low-intensity fire. Investment in protective bark is a fire-adaptation trait that varies systematically among taxa: a Northern Hemisphere synthesis found fire-adapted diploxylon pines allocate proportionally more stem diameter to bark than co-occurring thinner-barked taxa [@singh2022], so a coefficient pooled across mostly thinner-barked conifers encodes a bark allocation that western larch does not share. The genus is not uniform in this. Tamarack (*Larix laricina*), the only larch the Canadian national system fits and the sole larch congener available as a substitute, is a boreal species of different form and thinner bark, so the two North American larches plausibly sit on opposite sides of the conifer-pool bark allocation. That contrast, thick-barked western larch against thinner-barked tamarack, is the axis this paper turns on. Bark is also consequential for carbon in its own right: it is dense, persistent, and slow to decompose, and it enters volume-to-biomass conversion and harvest-residue accounting.
+
+The operational stakes are concrete in British Columbia, where western larch is commercially and ecologically important through the interior and the Interior Wetbelt. Carbon estimates there are produced with generalized inventory and national allometric tools, and the errors of those tools are material: in the Interior Wetbelt, the operational Vegetation Resources Inventory underestimated field-measured carbon by as much as seventy-five percent in the densest stands [@dellasala2022], and national-scale biomass products continue to be evaluated and revised against independent plot data [@tompalski2026]. Locating and, where warranted, correcting a component-level bias in a major, biomass-dominant pool of a commercially important species is therefore directly relevant to credible carbon accounting.
+
+Despite this, the adequacy of the national stem-bark coefficients for the larches has not been evaluated. Western larch is not among the species the national system fits, so in practice its bark is estimated through the generic conifer coefficient, a substitution never tested against western-larch bark. Tamarack is fitted, but whether its own coefficient serves its bark, and how the generic conifer coefficient treats it, has not been checked. Nor is it known whether the two larches, so different in bark investment, share a common departure or diverge. We address this gap using open destructive data for both species, one in-sample and one independent.
+
+Our objective is to evaluate the stem-bark component of the national coefficients for the two North American larches, and to determine whether refinement is warranted and at what level, species or genus. We test three hypotheses.
+
+**H1.** The generic conifer coefficient, the operative national predictor for western larch, underestimates western-larch stem-bark mass. Western larch is among the most fire-resistant conifers of the interior Northwest and develops exceptionally thick, deeply furrowed basal bark [@feis_larocc], an expression of the thick-bark fire-resistance syndrome that surface-fire regimes select for [@pausas2015; @pellegrini2017]. The generic coefficient is calibrated on a pool dominated by thinner-barked conifers [@lambert2005; @ung2008] and so encodes a bark-allocation relationship western larch does not obey.
+
+**H2.** Tamarack, the one larch the national system fits, is not underestimated by its own coefficient, and the generic conifer coefficient does not underestimate tamarack bark either. Tamarack is thinner-barked than western larch, so if anything the generic coefficient over-predicts its bark. The larches therefore do not share a single bark bias.
+
+**H3.** Because the two species depart in opposite directions, a species-specific western-larch bark coefficient is warranted, whereas a genus-pooled larch bark coefficient is not, since pooling would average two opposing departures.
+
+We also test whether each departure scales with diameter across the sampled range. Because large trees hold a disproportionate share of stand biomass and carbon [@lutz2018; @mildrexler2020], the behaviour of the western-larch underestimate in the largest trees would matter most for stand carbon; the present data reach 38 cm in tamarack and 20 cm in western larch, so that upper range is treated as a bounded limitation rather than extrapolated.
+
+# Methods
+
+We evaluate the stem-bark component of the Canadian national biomass coefficients for the two North American larches against destructively measured bark mass, at the individual-tree level, predicted against observed, summarized by diameter class, and followed by a recalibration and a test of whether pooling the genus is defensible. The design pairs one in-sample and one independent dataset, one per species, so the two arms answer different questions.
+
+## Study species and destructive data
+
+Tamarack destructive records were drawn from the ENFOR programme [@enfor2017], the pan-Canadian destructive-biomass sample the national coefficients were fitted on. Because these are the calibration trees, the tamarack arm is an in-sample adequacy check: it shows whether the coefficient reproduces its own data, not how it transfers to independent trees. We retained the tamarack records carrying oven-dry stem-bark mass, diameter, and height, giving n = 439 spanning diameters to 38 cm, with stem bark complete for every record. Masses are oven-dry kilograms.
+
+Western larch measurements were drawn from LegacyTreeData [@radtke2021], an open repository (CC BY) compiling more than a century of individual-tree destructive measurements of volume, weight, and physical properties. Western larch is absent from the national species set, so these trees are independent of the coefficient under test. We retained trees with a measured stem-bark dry weight and diameter, giving n = 13 from a single site, diameter 6.9 to 19.8 cm, with no total height recorded, so western larch is evaluated in the diameter-only form. Diameters, lengths, and masses, recorded in inches, feet, and pounds, were converted to centimetres, metres, and kilograms. LegacyTreeData holds no western-larch stem-bark mass above 20 cm and no tamarack stem-bark mass, so the open record for western larch is small-tree and single-site; we treat its magnitude as provisional and its direction as secure. Stem-bark component definitions differ in detail between the two sources, chiefly the bole section and top over which bark is summed, and were reconciled as far as the metadata allow; residual definitional difference is carried as a limitation.
+
+## National coefficients and the operative comparator
+
+The national equations [@lambert2005; @ung2008] estimate each biomass component in a power form of diameter alone, mass = b~1~·D^b~2~^, and of diameter and height, mass = b~1~·D^b~2~^·H^b~3~^, with parameters fitted by nonlinear seemingly-unrelated regression and constrained so components sum to total aboveground biomass. The national system tabulates parameters for 41 named species together with the generic classes coniferous, deciduous, and all species. Western larch is not among the named species, and the only larch in the set is tamarack, so in national practice western-larch bark is obtained from the generic coniferous coefficient. We therefore treat the generic conifer coefficient as the operative national predictor for western larch and the tamarack coefficient as the nearest-congener substitute, and we evaluate both. For stem bark the parameters are, in the diameter-and-height form, generic conifers b~1~ = 0.0101, b~2~ = 1.8486, b~3~ = 0.5525 and tamarack b~1~ = 0.0120, b~2~ = 1.7059, b~3~ = 0.5811; in the diameter-only form, generic conifers b~1~ = 0.0153, b~2~ = 2.2110 and tamarack b~1~ = 0.0174, b~2~ = 2.1109. Parameters were taken from the published tables as distributed through the Natural Resources Canada biomass calculator and archived under `02.inputs/larch/`. That western larch has no coefficient of its own is itself part of the finding: the evaluation concerns a generic coefficient applied to a species the national calibration never sampled.
+
+## Bias and uncertainty metrics
+
+For every tree we compared the national-coefficient prediction with the observed stem-bark mass. We summarized departure by relative bias, the summed prediction error as a percentage of summed observed mass, and by relative root mean square error, the root mean squared error as a percentage of mean observed mass, computed overall and within diameter classes (below 20, 20 to 40, and above 40 cm). A negative relative bias denotes underestimation. Because the independent western-larch sample is small, we placed a bootstrap 95 percent confidence interval on its relative bias by resampling the 13 trees 5000 times. As a mechanistic summary we also computed each species' stem-bark fraction, bark mass as a share of stem mass. Applying the tamarack coefficient to the ENFOR tamarack trees serves as an internal control: because these are the calibration data, the recovered bias should be near zero, which confirms that units and coefficient application are correct before any other result is read.
+
+## Recalibration and the test of pooling
+
+To ask whether a fitted larch coefficient improves on the national one, and whether the genus can be pooled, we fitted stem-bark equations of the same power form by log-log ordinary least squares with the Baskerville-Sprugel back-transformation correction [@sprugel1983], and evaluated them out of sample by ten-fold cross-validation. We compared the national and refitted coefficients on held-out trees, and, decisively for H3, compared the per-species departures directly, since a pooled refit is only defensible if the species do not diverge.
+
+## Size dependence
+
+To test whether each departure scales with tree size we regressed the proportional prediction error of the generic conifer coefficient on diameter, separately for each species, and tested the slope. The tamarack sample spans diameters to 38 cm and the independent western-larch sample to 20 cm, so the test characterizes size dependence across the sampled range; behaviour in the largest trees, beyond the sampled diameters, is bounded as a limitation in the Discussion rather than extrapolated.
+
+## Software
+
+Analyses were carried out in Python (NumPy) and reproduced in R. The executed pipeline is `02.inputs/scripts/larch_bark_genus_analysis.py`; the R helper functions are reproduced in the appendix so the manuscript is self-contained. Analysis code is openly available (repository link on acceptance).
+
+# Results
+
+The internal control behaved as required. Applying the tamarack coefficient to its own ENFOR calibration trees recovered observed bark almost exactly, a relative bias of −0.6 percent in the diameter-and-height form and −1.5 percent in the diameter-only form, confirming that unit conversion and coefficient application are correct.
+
+Against that baseline the two larches diverged. For western larch, evaluated independently of the national calibration, the generic conifer coefficient, the coefficient an accountant is in fact obliged to use, underestimated stem-bark mass by 47.0 percent in the diameter-only form, with a bootstrap 95 percent confidence interval of −49.2 to −45.1 percent. The underestimate was uniform rather than outlier-driven: every one of the 13 trees carried between 1.6 and 2.6 times the predicted bark, across the full 7 to 20 cm range. Substituting the tamarack coefficient, the nearest congener, did not help and slightly worsened the gap, a relative bias of −53.8 percent, because tamarack carries even less bark than the generic conifer pool.
+
+Tamarack told the opposite story. Its own national coefficient was essentially unbiased, as the control showed, whereas the generic conifer coefficient over-predicted tamarack stem bark by 18.6 percent in the diameter-only form and 20.7 percent with height. Tamarack is thinner-barked than the conifer pool, so the generic coefficient assigns it more bark than it carries. The mechanism behind both results is direct and measured: stem bark is 18.9 percent (± 2.9) of stem mass in western larch against 11.5 percent (± 3.9) in tamarack, so western larch invests roughly 1.6 times the bark share of tamarack.
+
+| Observed sample | National coefficient | Form | n | Rel. bias | Rel. RMSE |
+|------------|------------|------------|-----------:|-----------:|-----------:|
+| Tamarack, ENFOR (in-sample, control) | Tamarack | DBH+H | 439 | −0.6 % | 22.9 % |
+| Tamarack, ENFOR (in-sample) | Conifers (generic) | DBH+H | 439 | +20.7 % | 41.1 % |
+| Tamarack, ENFOR (in-sample) | Conifers (generic) | DBH | 439 | +18.6 % | 43.1 % |
+| Western larch (independent) | Conifers (generic) | DBH | 13 | −47.0 % | 56.3 % |
+| Western larch (independent) | Tamarack | DBH | 13 | −53.8 % | 65.4 % |
+
+: Stem-bark bias and error of the national coefficients for the two larches. Negative relative bias denotes underestimation. The western-larch rows are independent of the national calibration; the tamarack rows are in-sample. {#tbl-main}
+
+Because the two species depart in opposite directions, pooling them is not defensible, and the pooled analysis shows exactly why it misleads. A ten-fold cross-validated refit of a single larch bark equation reduced the pooled relative bias against the generic conifer coefficient from +16.6 to +2.2 percent and relative RMSE from 43.6 to 30.0 percent, and returned bark = 0.0192·D^2.097^. That apparent improvement is an artefact of averaging a large in-sample tamarack over-prediction against a small independent western-larch underestimate; the pooled equation serves neither species well and should not be read as a recommended correction. The genus-level number conceals the two species-level truths that matter.
+
+The two departures behaved differently with size. For tamarack the over-prediction by the generic conifer coefficient widened with diameter, the proportional error rising by 0.0074 per centimetre (t = 4.1, n = 439), from a few percent in the smallest stems to roughly a third at 38 cm, so the mismatch between tamarack and the conifer pool grows as the tree grows. The western-larch underestimate, by contrast, was near constant across the sampled range, the proportional error showing no significant trend with diameter (slope 0.0059 per centimetre, t = 1.4, n = 13), so the coefficient underestimated small and mid western larch by a similar 45 to 50 percent throughout the 7 to 20 cm sampled. Because the western-larch sample reaches only 20 cm, whether that underestimate holds, widens, or narrows in the large trees that carry most stand carbon lies beyond these data and is taken up as a bounded limitation in the Discussion.
+
+# Discussion
+
+The national stem-bark coefficients serve the two larches very differently, and the difference is the result. Tamarack, which the national system fitted, is well served by its own coefficient; the near-zero in-sample bias is expected and confirms that the machinery is sound. Western larch, which the national system never fitted, is served only by the generic conifer coefficient, and that coefficient underestimates its stem bark by roughly a half in the trees we could test independently. This is not an indictment of the national equations. It is the trade-off those equations are known to carry, made visible in a component and a species where it is large: a coefficient pooled over mostly thinner-barked conifers cannot reproduce the thick-bark syndrome of a fire-adapted species it did not sample, and the measured bark fractions, 18.9 against 11.5 percent, show the mechanism plainly. The finding is therefore a case for targeted refinement, a species-specific western-larch bark coefficient, not for abandoning generalized equations that work acceptably for most species, including for tamarack's own bark.
+
+The direction of the western-larch result is secure and its mechanism is independent of the calibration data, but three limits bound how far it can be pushed, and they set the next steps. The independent western-larch sample is small, single-site, and confined to trees below 20 cm, so the 47 percent figure is a firm sign and a provisional magnitude rather than a settled population estimate. The tamarack arm is in-sample, so it speaks to adequacy of fit, not to transfer. And residual differences in how stem bark is delimited between the two destructive sources could shift the western-larch magnitude, though not its sign. Most consequentially, the open data stop at 38 cm, and western larch at 20 cm, so the question that motivated the work, whether the underestimate widens in the large trees that dominate stand carbon, remains open. Within the sampled range the western-larch underestimate did not scale with diameter, holding near half throughout, and because component mass follows a power of diameter and bark thickness keeps increasing with size in larch [@zhu2024], whether that constant proportion persists or changes in the largest boles remains the one open question these data leave; destructive western-larch bark measurements above 20 cm would answer it.
+
+The result sits within the wider evidence that equation choice, not only remote sensing, governs biomass uncertainty [@vorster2020; @ahmed2013], and within the specific pattern that generalized equations can be right in the whole and wrong in a component [@fradette2021; @delcourt2022]. It adds a sharp instance: a biomass-dominant, carbon-relevant component of a commercially important species, estimated in operational British Columbia practice through a coefficient that halves it. For carbon accounting the consequence is a systematic under-count of western-larch bark wherever the generic coefficient is applied, concentrated in exactly the large trees that carry stand carbon and that the present data cannot yet reach [@lutz2018; @mildrexler2020]. The remedy is specific and modest, a fitted western-larch bark coefficient, and the counter-case of tamarack marks its boundary: the correction is a species matter, and a genus-level "larch" adjustment would import tamarack's opposite bias and make matters worse.
+
+# Conclusions
+
+Evaluated on open destructive data, Canada's national stem-bark coefficients underestimate western-larch bark by about 47 percent, through the generic conifer coefficient the species is assigned for want of one of its own, while serving tamarack's bark well through tamarack's own coefficient. The two larches depart in opposite directions, driven by a measured difference in bark investment, so the warranted refinement is a species-specific western-larch bark coefficient and not a genus-level one. The magnitude in large trees, where it matters most for stand carbon, remains to be measured, and destructive western-larch data spanning the operational diameter range are the priority for settling it.
+
+# Data availability {.unnumbered}
+
+Tamarack destructive measurements are from the Energy from the Forest Biomass (ENFOR) programme of Natural Resources Canada, Canadian Forest Service [@enfor2017], openly available under the Open Government Licence – Canada (https://doi.org/10.23687/fbad665e-8ac9-4635-9f84-e4fd53a6253c). Western-larch destructive measurements are from LegacyTreeData [@radtke2021], released under CC BY (https://doi.org/10.7294/W4VD6WC6). The national coefficients evaluated are published in Lambert et al. (2005) and Ung et al. (2008) and distributed through the Natural Resources Canada biomass calculator. No confidential or third-party project data were used. Analysis code is openly available (repository link on acceptance).
+
+# Reproducible workflow {.unnumbered}
+
+The reported values are produced by `02.inputs/scripts/larch_bark_genus_analysis.py` (NumPy only), which loads the two open datasets, applies the national coefficients, and computes the bias, error, bootstrap interval, bark fractions, and cross-validated refit above. The equivalent R helpers are reproduced here so the manuscript is self-contained; the data-dependent chunk is shown for transparency and marked `eval: false`, since it reads the destructive files under `02.inputs/`.
+
+```{r}
+#| label: setup
+#| echo: true
+#| eval: true
+#| message: false
+#| warning: false
+options(scipen = 999)
+```
+
+## Metrics and helpers
+
+```{r}
+#| label: helpers
+#| eval: true
+# Relative bias (%) and relative RMSE (%); negative bias denotes underestimation.
+rel_bias <- function(obs, pred) 100 * sum(pred - obs) / sum(obs)
+rel_rmse <- function(obs, pred) 100 * sqrt(mean((pred - obs)^2)) / mean(obs)
+
+# National stem-bark coefficients (Lambert 2005 / Ung 2008), kg.
+nat_bark_dbh   <- function(d, a = 0.0153, b = 2.2110) a * d^b            # generic conifers
+nat_bark_dbh_h <- function(d, h, a = 0.0101, b = 1.8486, cc = 0.5525) a * d^b * h^cc
+
+# Log-log power fit with Baskerville-Sprugel back-transformation correction (Sprugel 1983).
+fit_power <- function(d, ycol, xcols = "Dbh") {
+  f  <- reformulate(paste0("log(", xcols, ")"), response = paste0("log(", ycol, ")"))
+  m  <- lm(f, data = d)
+  cf <- exp(summary(m)$sigma^2 / 2)
+  list(model = m, cf = cf)
+}
+predict_power <- function(fit, newdata) fit$cf * exp(predict(fit$model, newdata))
+```
+
+## Genus-level bias, control, and pooling test
+
+```{r}
+#| label: genus-bias
+#| eval: false
+# Tamarack (ENFOR, in-sample; kg, cm, m) and western larch (LegacyTreeData, independent;
+# converted from lb, in). Column mapping is handled in the Python pipeline.
+tam <- read.csv("../02.inputs/enfor/enfor_tamarack.csv")     # Dbh, Height, OM_stem_bark
+wl  <- read.csv("../02.inputs/larch/legacy_western_larch.csv") # Dbh (cm), OM_stem_bark (kg)
+
+# Control: tamarack coefficient on its own calibration data should be ~0 bias.
+tam$pred_tam <- 0.0120 * tam$Dbh^1.7059 * tam$Height^0.5811
+rel_bias(tam$OM_stem_bark, tam$pred_tam)      # ~ -0.6 %
+
+# Operative predictor: generic conifer coefficient on each species.
+tam$pred_con <- nat_bark_dbh(tam$Dbh)
+wl$pred_con  <- nat_bark_dbh(wl$Dbh)
+rel_bias(tam$OM_stem_bark, tam$pred_con)      # ~ +18.6 %  (tamarack over-predicted)
+rel_bias(wl$OM_stem_bark,  wl$pred_con)       # ~ -47.0 %  (western larch underestimated)
+
+# Pooling test (H3): a single refit averages the two opposing departures and serves
+# neither species; per-species bias, not the pooled number, is the result.
+```
+
+# References {.unnumbered}

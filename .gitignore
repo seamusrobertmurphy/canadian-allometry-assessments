@@ -1,0 +1,17 @@
+._*
+.DS_Store
+
+/.quarto/
+/.Rproj.user/
+
+# Large third-party raw data. All are openly redownloadable; provenance and retrieval
+# instructions are in 02.inputs/README-data.md. stem.txt alone exceeds GitHub's 100 MB
+# per-file limit, so committing these would break a push as well as bloat the repository.
+02.inputs/legacy-tree/stem.txt
+02.inputs/legacy-tree/tree.txt
+02.inputs/tallo/Tallo.csv
+02.inputs/vri/vri_larch.csv
+
+# Copyrighted journal PDFs. Kept locally for reading, never redistributed through this
+# repository. The bibliography in 04.references/references.bib carries the DOIs.
+04.references/literature/

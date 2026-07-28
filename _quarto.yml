@@ -1,0 +1,4 @@
+project:
+  type: default
+  pre-render: "find . -name ._* -delete"
+  post-render: "find . -name ._* -delete"
