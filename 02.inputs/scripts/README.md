@@ -1,4 +1,4 @@
-# Legacy scripts — not the current analysis
+# Legacy scripts, not the current analysis
 
 > **The analysis now lives in the manuscript.** As of 2026-07-27 all four stages are
 > R code in the `# Analysis` section of
@@ -28,21 +28,21 @@ Base R only, no packages required. Reads `../data/enfor/EnforCanadaBiomassFinalD
 
 ## Structure
 
-- `R/metrics.R` — relative bias, relative RMSE, R2, evaluation helper.
-- `R/01_load_clean.R` — load ENFOR, normalise provinces, parse the Year field
+- `R/metrics.R`: relative bias, relative RMSE, R2, evaluation helper.
+- `R/01_load_clean.R`: load ENFOR, normalise provinces, parse the Year field
   (single years and two-season campaign ranges), clean black spruce, flag
   coordinate precision, add size strata.
-- `R/02_national_equation.R` — the national equation form (Lambert 2005 / Ung 2008):
+- `R/02_national_equation.R`: the national equation form (Lambert 2005 / Ung 2008):
   component power models `y = b1*D^b2` (DBH-only) and `y = b1*D^b2*H^b3` (DBH+height),
   total as the component sum. Two coefficient sources: published (authoritative,
   `coefficients/national_published.csv`) and an open re-fit to ENFOR.
-- `R/03_fit_and_bias.R` — fit the national form on the whole black-spruce
+- `R/03_fit_and_bias.R`: fit the national form on the whole black-spruce
   population, measure bias by size stratum, and compare against a stratum-specific
   fit evaluated out-of-sample by 5-fold cross-validation.
-- `run_all.R` — orchestrates both DBH-only and DBH+height forms.
-- `coefficients/national_published.csv` — schema and placeholder for the published
+- `run_all.R`: orchestrates both DBH-only and DBH+height forms.
+- `coefficients/national_published.csv`: schema and placeholder for the published
   black-spruce coefficients, to be filled from Lambert 2005 Table 3 and Ung 2008 Table 4.
-- `verify_python_mirror.py` — a Python reimplementation used only to check the R
+- `verify_python_mirror.py`: a Python reimplementation used only to check the R
   numbers in this build environment (R is not installed here). Not part of the deliverable.
 
 ## Two coefficient paths

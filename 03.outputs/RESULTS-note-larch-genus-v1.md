@@ -10,10 +10,10 @@ mean observed.
 
 ## Samples
 
-- **Tamarack (*Larix laricina*), ENFOR — in-sample.** n = 439 with complete stem-bark
+- **Tamarack (*Larix laricina*), ENFOR, in-sample.** n = 439 with complete stem-bark
   mass, DBH and height; DBH ≤ 38 cm. ENFOR is the data the national coefficients were
   fitted on, so this arm is an in-sample adequacy check, not an independent test.
-- **Western larch (*L. occidentalis*), LegacyTreeData — out-of-sample.** n = 13 with
+- **Western larch (*L. occidentalis*), LegacyTreeData, out-of-sample.** n = 13 with
   stem-bark mass and DBH; **no height recorded, single site**, DBH 6.9–19.8 cm. Genuinely
   independent of ENFOR. Imperial units converted to metric.
 - **Western larch large trees (> 40 cm) and any tamarack bark in LegacyTreeData: none.**
@@ -42,7 +42,7 @@ underestimate is uniform, not outlier-driven.
 
 **Mechanism.** Stem-bark fraction of stem mass: tamarack 11.5 % ± 3.9 (n = 439) versus
 western larch 18.9 % ± 2.9 (n = 13). Western larch invests roughly 1.6× the bark share
-of tamarack — the thick-bark syndrome the paper hypothesised, measured directly.
+of tamarack, the thick-bark syndrome the paper hypothesised, measured directly.
 
 ## The headline, stated honestly
 
@@ -58,7 +58,7 @@ The two larches depart from the national coefficients in **opposite directions**
    tamarack bark (+19 %), while tamarack's own national coefficient is essentially
    unbiased (−0.6 %). Tamarack is thinner-barked than the conifer pool average.
 3. **Consequence:** a species-specific *western larch* bark coefficient is warranted; a
-   genus-pooled "larch" bark coefficient is not — it would average two opposite biases.
+   genus-pooled "larch" bark coefficient is not, since it would average two opposite biases.
    The naive pooled refit (10-fold CV: national Conifers +16.6 % / 43.6 % → genus-refit
    +2.2 % / 30.0 %; `bark = 0.0192·DBH^2.097`) illustrates exactly this masking and
    should not be presented as the recommended fix.

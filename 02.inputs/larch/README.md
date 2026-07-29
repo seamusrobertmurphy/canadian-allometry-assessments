@@ -30,7 +30,7 @@ species plus the generic classes Conifers / Deciduous / All.
   components, and all numeric parameters are reproduced exactly. French columns are
   not needed for the analysis.
 
-## KEY FINDING — western larch has no national equation
+## KEY FINDING: western larch has no national equation
 
 The 41-species national set contains only ONE larch: **Tamarack larch (*Larix
 laricina*)**. **Western larch (*Larix occidentalis*) is absent.** This resolves

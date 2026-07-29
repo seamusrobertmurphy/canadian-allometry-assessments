@@ -1,4 +1,4 @@
-# LegacyTreeData — individual-tree destructive measurements
+# LegacyTreeData: individual-tree destructive measurements
 
 The **independent** side of the analysis. Western larch (*Larix occidentalis*) is absent
 from Canada's national species set, so these trees were never used to fit the coefficient
@@ -7,9 +7,9 @@ than a residual check.
 
 This folder supplies **two separate samples** that share no individual trees:
 
-1. **Bark mass** (`tree.txt`) — 13 western larch with oven-dry stem-bark weight, 6.9 to
+1. **Bark mass** (`tree.txt`): 13 western larch with oven-dry stem-bark weight, 6.9 to
    19.8 cm DBH, one site. Fits the local equation.
-2. **Stem taper** (`stem.txt`) — 15 western larch (16.3 to 39.4 cm) and 42 tamarack (12.2
+2. **Stem taper** (`stem.txt`): 15 western larch (16.3 to 39.4 cm) and 42 tamarack (12.2
    to 31.5 cm) with paired outside-bark and inside-bark diameters at breast height. Tests
    bark allocation on larger trees, using measured diameters only, with no assumed density.
 
@@ -18,7 +18,7 @@ equation is applied to inventory stands averaging 32 cm, well beyond its calibra
 
 ## Source and licence
 
-- **Title:** LegacyTreeData — an online repository of individual-tree and stand-level biomass data
+- **Title:** LegacyTreeData: an online repository of individual-tree and stand-level biomass data
 - **Publisher:** University of Idaho Library / Virginia Tech
 - **DOI:** https://doi.org/10.7294/W4VD6WC6
 - **Portal:** https://www.legacytreedata.org
@@ -29,7 +29,7 @@ equation is applied to inventory stands averaging 32 cm, well beyond its calibra
 
 The repository distributes the whole holding as one archive of pipe/comma-delimited text
 tables. Request or export the full dataset from `legacytreedata.org`, then extract the
-tables below into this folder. No subsetting is needed — the analysis filters in code.
+tables below into this folder. No subsetting is needed, since the analysis filters in code.
 
 ## Files
 
@@ -39,9 +39,9 @@ tables below into this folder. No subsetting is needed — the analysis filters 
 | `stem.txt` | 2,774,773 | 132 MB | **no** | stem taper: paired outside/inside-bark diameters by height |
 | `section.txt` | 28,902 | 4 MB | yes | sectional measurements |
 | `location.txt` | 23,029 | 2 MB | yes | site and study metadata |
-| `branch.txt`, `core.txt`, `disk.txt` | — | 1–3 MB | yes | not used by this analysis |
-| `Data_Dictionary.pdf` | — | 1 MB | yes | **read this first** — defines every column code |
-| `FileDescriptions.rtf` | — | small | yes | table-level descriptions |
+| `branch.txt`, `core.txt`, `disk.txt` | n/a | 1 to 3 MB | yes | not used by this analysis |
+| `Data_Dictionary.pdf` | n/a | 1 MB | yes | **read this first.** Defines every column code |
+| `FileDescriptions.rtf` | n/a | small | yes | table-level descriptions |
 
 `tree.txt` and `stem.txt` are **excluded from git**. `stem.txt` at 132 MB exceeds GitHub's
 100 MB per-file hard limit; `tree.txt` is omitted for bulk. Both are openly redownloadable,
@@ -49,7 +49,7 @@ so restore them here and the pipeline runs unchanged.
 
 ## Columns the analysis reads
 
-**From `tree.txt`** — keyed by `author, loc, spcd, treeno`:
+**From `tree.txt`**, keyed by `author, loc, spcd, treeno`:
 
 | Column | Meaning |
 |---|---|
@@ -59,7 +59,7 @@ so restore them here and the pipeline runs unchanged.
 | `st_wd_dw` | stem wood dry weight (pounds) |
 | `ag_dw` | total aboveground dry weight (pounds) |
 
-**From `stem.txt`** — same four-part key:
+**From `stem.txt`**, same four-part key:
 
 | Column | Meaning |
 |---|---|

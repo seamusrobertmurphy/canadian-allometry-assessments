@@ -1,9 +1,9 @@
-# ENFOR — Energy from the Forest Biomass destructive-biomass sample
+# ENFOR: Energy from the Forest Biomass destructive-biomass sample
 
 The **calibration** side of the analysis. This is the pan-Canadian destructive sample that
 Canada's national biomass equations were actually fitted on, which makes the tamarack arm an
 honest in-sample adequacy check: if the coefficient cannot recover the trees it was built
-from, nothing downstream is trustworthy. It does — relative bias −0.6 percent — and that
+from, nothing downstream is trustworthy. It does, at a relative bias of −0.6 percent, and that
 internal control is what licenses the western-larch comparison.
 
 Tamarack (*Larix laricina*) is the **only larch in the national species set**. It is
@@ -22,7 +22,7 @@ might reach for when estimating western larch.
 
 ## How to download
 
-Both files download directly from the Open Canada portal record above — no request or
+Both files download directly from the Open Canada portal record above, with no request or
 account needed. French-language equivalents exist at the same record and were not pulled.
 
 ## Files
@@ -30,7 +30,7 @@ account needed. French-language equivalents exist at the same record and were no
 | File | Rows | Size | In git |
 |---|---:|---:|:---:|
 | `EnforCanadaBiomassFinalData_v2007-ENG.csv` | 9,454 trees | 1 MB | yes |
-| `EnforCanadaBiomassMetadata_v2010-ENG.doc` | — | 3 MB | yes |
+| `EnforCanadaBiomassMetadata_v2010-ENG.doc` | n/a | 3 MB | yes |
 
 **Read the metadata document before analysis.** It defines the oven-dry-mass compartments
 and the compilation corrections.
@@ -41,10 +41,10 @@ One row per destructively sampled tree. Oven-dry mass in kilograms by compartmen
 
 | Column | Meaning |
 |---|---|
-| `Species_E` | English species name — matched on `tamarack` |
+| `Species_E` | English species name, matched on `tamarack` |
 | `Dbh` | diameter at breast height, cm |
 | `Height` | total height, m |
-| `OM_stem_bark` | stem bark oven-dry mass, kg — **the focal component** |
+| `OM_stem_bark` | stem bark oven-dry mass in kg, **the focal component** |
 | `OM_stem_wood` | stem wood oven-dry mass, kg |
 | `OM_total` | total aboveground oven-dry mass, kg |
 
@@ -68,7 +68,7 @@ fitted on, not a favourable slice of it.
   names arrive mangled.
 - **Species labels carry variants.** A loose substring match returns more rows than an exact
   label match. The analysis matches case-insensitively on `tamarack`.
-- **Province labels are not normalised** — lowercase `on`/`qc` appear beside `ON`/`QC`. Fold
+- **Province labels are not normalised.** Lowercase `on`/`qc` appear beside `ON`/`QC`. Fold
   before any by-province summary. Not used in the current analysis.
 - **Coordinates are coarse**, whole-degree in places. Do not treat `Lat`/`Long` as plot-precise.
 - **No site, drainage, ecosite or wetland attribute exists.** There is no column marking a

@@ -2,7 +2,7 @@
 
 Every dataset the analysis uses, where it came from, and how to get it back. Each subfolder
 carries its own README with the source, licence, download route, column definitions and
-gotchas — **read those before using the data**. This file is the index.
+gotchas: **read those before using the data**. This file is the index.
 
 | Folder | Dataset | Role | README |
 |---|---|---|---|
@@ -16,7 +16,7 @@ gotchas — **read those before using the data**. This file is the index.
 ## Runtime guide
 
 The analysis is in R code inside `01.manuscript/canadian-allometry-forest-science.qmd`. There
-are no separate scripts to run — rendering the manuscript runs the pipeline.
+are no separate scripts to run: rendering the manuscript runs the pipeline.
 
 | Chunk | Reads |
 |---|---|
