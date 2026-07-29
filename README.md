@@ -8,19 +8,31 @@ Manuscript, data and analysis for a component-level assessment of Canada's natio
 
 Section order follows the *Forest Science* requirement for original research:
 
-<table width="100%">
-<thead>
-<tr><th width="14%" align="left">Section</th><th width="86%" align="left">Contains</th></tr>
-</thead>
-<tbody>
-<tr><td>Introduction</td><td>Generalized equations and their known cost<br>Why bark, why western larch</td></tr>
-<tr><td>Study Area &amp; Methods</td><td>Biomass data<br>Development of allometric equations<br>Bark geometry from stem taper<br>Application to the forest inventory<br>Published comparison equation</td></tr>
-<tr><td>Results</td><td>National equation accuracy<br>Larch-specific equations<br>Bark allocation<br>Carbon stocks<br>Comparison with published equations</td></tr>
-<tr><td>Discussion</td><td>Mechanism<br>Spatial coherence<br>Bounds on the extrapolation<br>Study's limitations</td></tr>
-<tr><td>Data Availability</td><td>Links to data source<br>Guides to downloading and verifying data</td></tr>
-<tr><td>References</td><td>References</td></tr>
-</tbody>
-</table>
+1. **Introduction**
+   - Generalized equations and their known cost
+   - Why bark, why western larch
+2. **Study Area & Methods**
+   - Biomass data
+   - Development of allometric equations
+   - Bark geometry from stem taper
+   - Application to the forest inventory
+   - Published comparison equation
+3. **Results**
+   - National equation accuracy
+   - Larch-specific equations
+   - Bark allocation
+   - Carbon stocks
+   - Comparison with published equations
+4. **Discussion**
+   - Mechanism
+   - Spatial coherence
+   - Bounds on the extrapolation
+   - Study's limitations
+5. **Data Availability**
+   - Links to data source
+   - Guides to downloading and verifying data
+6. **References**
+   - References
 
 Subsection headings follow **Delcourt et al. 2022**, the closest exemplar: they name the object studied, not the analytical stage.
 
