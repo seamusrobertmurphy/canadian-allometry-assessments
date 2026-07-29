@@ -35,6 +35,123 @@ analysis, never typed.
 | `01.manuscript/` | the master `.qmd`, its `.docx` and `.html` renders, and `archive/` of superseded drafts |
 | `02.inputs/` | the four datasets, each with its own README giving source, licence and download route |
 | `03.outputs/` | `tables/` (T1–T11) and `figures/` (F1–F9), regenerated on every render, plus results notes |
-| `04.references/` | `references.bib`, `springer-basic-author-date.csl` (the live style), Word style docs, and `literature/` (**not in git**, being copyrighted PDFs) |
+| `04.references/` | `references.bib`, `springer-basic-author-date.csl` (the live style), Word style docs, and `literature/` |
+
+---
+
+## Setting up on a new Mac
+
+Everything below is free and takes about half an hour, most of it downloading. You need four
+installs, then one clone. Work through them in order.
+
+### 1. Install R
+
+Go to https://cran.r-project.org/bin/macosx/ and download the Apple silicon build, the one
+marked `arm64`, unless the Mac is an older Intel model. Open the `.pkg` and accept every
+default. R is the engine underneath, and you will almost never open it directly.
+
+### 2. Install RStudio
+
+Go to https://posit.co/download/rstudio-desktop/, download the macOS version, and drag
+RStudio into Applications. RStudio includes Quarto, so rendering needs nothing further.
+
+### 3. Install Git and Git LFS
+
+macOS does not ship with Git. Open Terminal, from Applications then Utilities, and run:
+
+```
+xcode-select --install
+```
+
+Click Install and wait. Then install Git LFS from https://git-lfs.com and run once:
+
+```
+git lfs install
+```
+
+**Git LFS is not optional here.** One input, the 138 MB stem taper table, is stored through
+it. Without Git LFS you get a 134-byte placeholder in place of the data and the taper
+analysis fails with an unhelpful error.
+
+Finally tell Git who you are, using the address on your GitHub account:
+
+```
+git config --global user.name "Jason Heffner"
+git config --global user.email "you@example.com"
+```
+
+### 4. Install GitHub Desktop, optional
+
+https://desktop.github.com. Sign in once with your GitHub account and it manages
+credentials for you, with no tokens to create or store. Worth it if you would rather not
+use the terminal.
+
+## Getting the repository
+
+Three routes to the same result. Pick one.
+
+**A. Through RStudio.** File, then New Project, then Version Control, then Git. Paste this
+as the repository URL:
+
+```
+https://github.com/seamusrobertmurphy/canadian-allometry-assessments.git
+```
+
+Choose where to put it and click Create Project. RStudio clones the repo and opens it. Then
+open the Terminal tab inside RStudio and run `git lfs pull`, because the RStudio Git pane
+does not fetch LFS content on its own.
+
+**B. Through GitHub Desktop.** File, then Clone Repository, then the URL tab. Paste the same
+URL, choose a folder, click Clone. GitHub Desktop pulls the LFS file for you.
+
+**C. Through Terminal.**
+
+```
+cd ~/Documents
+git clone https://github.com/seamusrobertmurphy/canadian-allometry-assessments.git
+cd canadian-allometry-assessments
+git lfs pull
+```
+
+### Check the clone worked
+
+```
+ls -lh 02.inputs/legacy-tree/stem.txt
+```
+
+It should report roughly `138M`. If it reports `134B`, Git LFS did not run, so run
+`git lfs install` followed by `git lfs pull`.
+
+## Rendering the manuscript
+
+Open `canadian-allometry-assessments.Rproj`, then open
+`01.manuscript/canadian-allometry-forest-science.qmd`, then click **Render**.
+
+The analysis lives inside the manuscript, so rendering runs the whole pipeline. Tables are
+written to `03.outputs/tables` and figures to `03.outputs/figures`. Nothing is fetched over
+the network, since all inputs are cached in `02.inputs`.
+
+The only R package required is **knitr**, and everything else is base R. If R reports knitr
+missing, run `install.packages("knitr")` in the RStudio console. The first render takes a
+few minutes.
+
+## Saving your GitHub credentials
+
+Cloning and rendering need no login, because the repository is public. Pushing changes back
+does.
+
+With GitHub Desktop, signing in once is all that is needed.
+
+In the terminal, have Git store credentials in the macOS keychain so you are asked only
+once:
+
+```
+git config --global credential.helper osxkeychain
+```
+
+The first push asks for your username and then a password. GitHub no longer accepts an
+account password here, so give it a personal access token instead. Create one under GitHub,
+Settings, Developer settings, Personal access tokens, Tokens (classic), with the `repo`
+scope ticked. Paste the token when Git asks for the password and the keychain remembers it.
 
 
