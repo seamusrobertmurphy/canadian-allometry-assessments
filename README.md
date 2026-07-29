@@ -8,13 +8,9 @@ Manuscript, data and analysis for a component-level assessment of Canada's natio
 
 Section order follows the *Forest Science* requirement for original research:
 
-<table>
-<colgroup>
-<col width="18%">
-<col width="82%">
-</colgroup>
+<table width="100%">
 <thead>
-<tr><th>Section</th><th>Contains</th></tr>
+<tr><th width="14%" align="left">Section</th><th width="86%" align="left">Contains</th></tr>
 </thead>
 <tbody>
 <tr><td>Introduction</td><td>Generalized equations and their known cost<br>Why bark, why western larch</td></tr>
@@ -34,13 +30,9 @@ Subsection headings follow **Delcourt et al. 2022**, the closest exemplar: they 
 
 ## Layout
 
-<table>
-<colgroup>
-<col width="18%">
-<col width="82%">
-</colgroup>
+<table width="100%">
 <thead>
-<tr><th>Folder</th><th>Holds</th></tr>
+<tr><th width="14%" align="left">Folder</th><th width="86%" align="left">Holds</th></tr>
 </thead>
 <tbody>
 <tr><td><code>01.manuscript/</code></td><td>the master <code>.qmd</code>, its <code>.docx</code> and <code>.html</code> renders, and <code>archive/</code> of superseded drafts</td></tr>
