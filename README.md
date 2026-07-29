@@ -8,34 +8,14 @@ Manuscript, data and analysis for a component-level assessment of Canada's natio
 
 Section order follows the *Forest Science* requirement for original research:
 
-+----------------------+------------------------------------------------+
-| Section              | Contains                                       |
-+======================+================================================+
-| Introduction         | -   Generalized equations and their known cost |
-|                      | -   Why bark, why western larch                |
-+----------------------+------------------------------------------------+
-| Study Area & Methods | -   Biomass data                               |
-|                      | -   Development of allometric equations        |
-|                      | -   Bark geometry from stem taper              |
-|                      | -   Application to the forest inventory        |
-|                      | -   Published comparison equation              |
-+----------------------+------------------------------------------------+
-| Results              | -   National equation accuracy                 |
-|                      | -   Larch-specific equations                   |
-|                      | -   Bark allocation                            |
-|                      | -   Carbon stocks                              |
-|                      | -   Comparison with published equations        |
-+----------------------+------------------------------------------------+
-| Discussion           | -   Mechanism,                                 |
-|                      | -   Spatial coherence,                         |
-|                      | -   Bounds on the extrapolation,               |
-|                      | -   Study's limitations                        |
-+----------------------+------------------------------------------------+
-| Data Availability    | -   Links to data source                       |
-|                      | -   Guides to downloading & verifying data     |
-+----------------------+------------------------------------------------+
-| References           | -   References                                 |
-+----------------------+------------------------------------------------+
+| Section | Contains |
+|---|---|
+| Introduction | Generalized equations and their known cost<br>Why bark, why western larch |
+| Study Area & Methods | Biomass data<br>Development of allometric equations<br>Bark geometry from stem taper<br>Application to the forest inventory<br>Published comparison equation |
+| Results | National equation accuracy<br>Larch-specific equations<br>Bark allocation<br>Carbon stocks<br>Comparison with published equations |
+| Discussion | Mechanism<br>Spatial coherence<br>Bounds on the extrapolation<br>Study's limitations |
+| Data Availability | Links to data source<br>Guides to downloading and verifying data |
+| References | References |
 
 Subsection headings follow **Delcourt et al. 2022**, the closest exemplar: they name the object studied, not the analytical stage.
 
@@ -45,17 +25,12 @@ Subsection headings follow **Delcourt et al. 2022**, the closest exemplar: they 
 
 ## Layout
 
-+------------------+--------------------------------------------------------------------------------------------+
-| Folder           | Holds                                                                                      |
-+==================+============================================================================================+
-| `01.manuscript/` | the master `.qmd`, its `.docx` and `.html` renders, and `archive/` of superseded drafts    |
-+------------------+--------------------------------------------------------------------------------------------+
-| `02.inputs/`     | the four datasets, each with its own README giving source, licence and download route      |
-+------------------+--------------------------------------------------------------------------------------------+
-| `03.outputs/`    | `tables/` (T1–T11) and `figures/` (F1–F9), regenerated on every render, plus results notes |
-+------------------+--------------------------------------------------------------------------------------------+
-| `04.references/` | `references.bib`, `springer-basic-author-date.csl`, Word style docs, and `literature/`     |
-+------------------+--------------------------------------------------------------------------------------------+
+| Folder | Holds |
+|---|---|
+| `01.manuscript/` | the master `.qmd`, its `.docx` and `.html` renders, and `archive/` of superseded drafts |
+| `02.inputs/` | the four datasets, each with its own README giving source, licence and download route |
+| `03.outputs/` | `tables/` (T1–T11) and `figures/` (F1–F9), regenerated on every render, plus results notes |
+| `04.references/` | `references.bib`, `springer-basic-author-date.csl`, Word style docs, and `literature/` |
 
 ------------------------------------------------------------------------
 
