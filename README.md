@@ -8,14 +8,23 @@ Manuscript, data and analysis for a component-level assessment of Canada's natio
 
 Section order follows the *Forest Science* requirement for original research:
 
-| Section | Contains |
-|---|---|
-| Introduction | Generalized equations and their known cost<br>Why bark, why western larch |
-| Study Area & Methods | Biomass data<br>Development of allometric equations<br>Bark geometry from stem taper<br>Application to the forest inventory<br>Published comparison equation |
-| Results | National equation accuracy<br>Larch-specific equations<br>Bark allocation<br>Carbon stocks<br>Comparison with published equations |
-| Discussion | Mechanism<br>Spatial coherence<br>Bounds on the extrapolation<br>Study's limitations |
-| Data Availability | Links to data source<br>Guides to downloading and verifying data |
-| References | References |
+<table>
+<colgroup>
+<col width="18%">
+<col width="82%">
+</colgroup>
+<thead>
+<tr><th>Section</th><th>Contains</th></tr>
+</thead>
+<tbody>
+<tr><td>Introduction</td><td>Generalized equations and their known cost<br>Why bark, why western larch</td></tr>
+<tr><td>Study Area &amp; Methods</td><td>Biomass data<br>Development of allometric equations<br>Bark geometry from stem taper<br>Application to the forest inventory<br>Published comparison equation</td></tr>
+<tr><td>Results</td><td>National equation accuracy<br>Larch-specific equations<br>Bark allocation<br>Carbon stocks<br>Comparison with published equations</td></tr>
+<tr><td>Discussion</td><td>Mechanism<br>Spatial coherence<br>Bounds on the extrapolation<br>Study's limitations</td></tr>
+<tr><td>Data Availability</td><td>Links to data source<br>Guides to downloading and verifying data</td></tr>
+<tr><td>References</td><td>References</td></tr>
+</tbody>
+</table>
 
 Subsection headings follow **Delcourt et al. 2022**, the closest exemplar: they name the object studied, not the analytical stage.
 
@@ -25,12 +34,21 @@ Subsection headings follow **Delcourt et al. 2022**, the closest exemplar: they 
 
 ## Layout
 
-| Folder | Holds |
-|---|---|
-| `01.manuscript/` | the master `.qmd`, its `.docx` and `.html` renders, and `archive/` of superseded drafts |
-| `02.inputs/` | the four datasets, each with its own README giving source, licence and download route |
-| `03.outputs/` | `tables/` (T1–T11) and `figures/` (F1–F9), regenerated on every render, plus results notes |
-| `04.references/` | `references.bib`, `springer-basic-author-date.csl`, Word style docs, and `literature/` |
+<table>
+<colgroup>
+<col width="18%">
+<col width="82%">
+</colgroup>
+<thead>
+<tr><th>Folder</th><th>Holds</th></tr>
+</thead>
+<tbody>
+<tr><td><code>01.manuscript/</code></td><td>the master <code>.qmd</code>, its <code>.docx</code> and <code>.html</code> renders, and <code>archive/</code> of superseded drafts</td></tr>
+<tr><td><code>02.inputs/</code></td><td>the four datasets, each with its own README giving source, licence and download route</td></tr>
+<tr><td><code>03.outputs/</code></td><td><code>tables/</code> (T1 to T11) and <code>figures/</code> (F1 to F9), regenerated on every render, plus results notes</td></tr>
+<tr><td><code>04.references/</code></td><td><code>references.bib</code>, <code>springer-basic-author-date.csl</code>, Word style docs, and <code>literature/</code></td></tr>
+</tbody>
+</table>
 
 ------------------------------------------------------------------------
 
