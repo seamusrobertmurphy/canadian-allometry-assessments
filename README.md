@@ -42,7 +42,8 @@ analysis, never typed.
 ## Setting up on a new Mac
 
 Everything below is free and takes about half an hour, most of it downloading. You need four
-installs, then one clone. Work through them in order.
+installs, then one clone. Work through them in order. A fifth section covers build tools you
+will most likely never need.
 
 ### 1. Install R
 
@@ -85,6 +86,51 @@ git config --global user.email "you@example.com"
 https://desktop.github.com. Sign in once with your GitHub account and it manages
 credentials for you, with no tokens to create or store. Worth it if you would rather not
 use the terminal.
+
+### 5. Build tools, probably not needed
+
+**Rtools is Windows only.** There is no Mac package by that name, and looking for one is a
+common dead end. What Rtools provides on Windows is covered on macOS by the two pieces
+below, and this project needs neither.
+
+Rendering the manuscript takes base R and knitr. Knitr arrives from CRAN as a prebuilt
+binary, so nothing is compiled and no toolchain is involved. Install the following only if a
+package later refuses to install without building from source.
+
+**Xcode Command Line Tools.** Already installed at step 3, since it is what supplies Git.
+Confirm with:
+
+```
+xcode-select -p
+```
+
+That should print `/Library/Developer/CommandLineTools`. The full Xcode application is
+roughly 15 GB and is not wanted here. To refresh the tools later, look under System
+Settings, then General, then Software Update, or run `xcode-select --install` again.
+
+**gfortran.** Needed only by packages carrying Fortran source. Apple does not ship it. Take
+the official build from https://mac.r-project.org/tools/, matching the installer to your R
+version, then confirm with:
+
+```
+gfortran --version
+```
+
+It installs to `/opt/gfortran`, where R finds it without further configuration.
+
+**XQuartz.** https://www.xquartz.org. Supplies the X11 graphics device that a few older
+packages still expect. Nothing in this analysis uses it.
+
+Keep macOS itself current under System Settings, then General, then Software Update. CRAN
+builds its Apple silicon binaries against recent macOS releases, and an old system is the
+usual reason a package will not install.
+
+If `install.packages()` ever offers to build from source and you would rather it did not,
+decline, or ask for the binary outright:
+
+```
+install.packages("somepackage", type = "binary")
+```
 
 ## Getting the repository
 
