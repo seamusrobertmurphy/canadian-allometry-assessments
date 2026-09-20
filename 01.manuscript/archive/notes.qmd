@@ -1,0 +1,17 @@
+---
+title: "notes"
+format: docx
+editor: visual
+---
+
+## Hypotheses
+
+We expect...
+
+1.  *Size dependence.* Recomputing stem-bark biomass with a species-specific coefficient returns higher values than the national coefficient, and the relative discrepancy rises monotonically with DBH, reaching its maximum in the largest diameter classes.
+
+2.  *Error reduction.* The species-specific coefficient removes the systematic component of error and lowers prediction uncertainty, measured as relative RMSE against destructively sampled bark mass.
+
+3.  *Stand-level propagation.* Because a small number of large-diameter trees carry a disproportionate share of stand mass, near half of aboveground biomass in many forests and roughly 40 percent of aboveground carbon in the dry east-Cascade forests where larch is abundant (Lutz et al. 2018; Mildrexler et al. 2020), the size-dependent bias aggregates into a material underestimate of stand-level bark carbon rather than canceling.
+
+Dataset source: <https://data.lib.vt.edu/articles/dataset/LegacyTreeData/14099516>

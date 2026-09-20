@@ -1,0 +1,11 @@
+"dataset","variable","n","mean","sd","min","max"
+"tamarack (ENFOR)","DBH (cm)",439,15.4580865603645,8.9154666276554,1.8,44.5
+"tamarack (ENFOR)","Height (m)",439,12.760979498861,5.95609428099099,2.2,30.45
+"tamarack (ENFOR)","Stem bark (kg)",439,7.95859451025057,8.62384198200495,0.07,62.4
+"tamarack (ENFOR)","Stem wood (kg)",439,81.8651368109339,98.1672912992297,0.28,742.4
+"tamarack (ENFOR)","Total AGB (kg)",439,109.009953712984,126.760878732375,0.42,938.88
+"western larch (LegacyTreeData)","DBH (cm)",13,12.3678461538462,4.17027548742594,6.858,19.812
+"western larch (LegacyTreeData)","Height (m)",0,NA,NA,NA,NA
+"western larch (LegacyTreeData)","Stem bark (kg)",13,8.56242129230769,6.03962343649461,2.8122704,20.8198728
+"western larch (LegacyTreeData)","Stem wood (kg)",13,40.4255147076923,32.5730073409763,7.9832192,111.3114768
+"western larch (LegacyTreeData)","Total AGB (kg)",13,51.4722244923077,40.3435901834347,11.113004,137.1208616
