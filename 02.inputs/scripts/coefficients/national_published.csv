@@ -1,9 +1,0 @@
-species,component,form,b1,b2,b3,source,notes
-Black Spruce,wood,dbh,,,,Lambert 2005 Table 3,fill b1 b2 from published black spruce parameters
-Black Spruce,bark,dbh,,,,Lambert 2005 Table 3,
-Black Spruce,branches,dbh,,,,Lambert 2005 Table 3,
-Black Spruce,foliage,dbh,,,,Lambert 2005 Table 3,
-Black Spruce,wood,dbh_h,,,,Ung 2008 Table 4,fill b1 b2 b3 from published black spruce parameters
-Black Spruce,bark,dbh_h,,,,Ung 2008 Table 4,
-Black Spruce,branches,dbh_h,,,,Ung 2008 Table 4,
-Black Spruce,foliage,dbh_h,,,,Ung 2008 Table 4,
